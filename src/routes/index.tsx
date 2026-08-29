@@ -1,17 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, MessageCircle } from "lucide-react";
+import { ArrowLeft, CalendarCheck, MessageCircle, Phone } from "lucide-react";
 
 import clinicRoom from "@/assets/clinic-room.jpg";
 import heroClinic from "@/assets/hero-clinic.jpg";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import { DoctorCard } from "@/components/site/DoctorCard";
 import { FaqAccordion } from "@/components/site/FaqAccordion";
+import { QuickAccess } from "@/components/site/QuickAccess";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { Testimonials } from "@/components/site/Testimonials";
 import { TrustStrip } from "@/components/site/TrustStrip";
-import { cases, doctors, faqs, journey, services, stats } from "@/data/clinic";
+import { cases, clinic, doctors, faqs, journey, services, stats } from "@/data/clinic";
 
 export const Route = createFileRoute("/")({
   head: () => ({
