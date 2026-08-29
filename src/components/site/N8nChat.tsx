@@ -17,9 +17,8 @@ export function N8nChat() {
 
     let cancelled = false;
 
-    void import(
-      /* @vite-ignore */ "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js"
-    ).then(
+    const bundleUrl = "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+    void import(/* @vite-ignore */ bundleUrl).then(
       ({ createChat }) => {
         if (cancelled) return;
         createChat({
