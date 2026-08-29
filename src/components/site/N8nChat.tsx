@@ -1,0 +1,48 @@
+import { useEffect } from "react";
+
+const N8N_CSS_ID = "n8n-chat-styles";
+
+/**
+ * شات n8n الخاص بالعميلة — يُحمَّل في المتصفح فقط (client-only).
+ */
+export function N8nChat() {
+  useEffect(() => {
+    if (!document.getElementById(N8N_CSS_ID)) {
+      const link = document.createElement("link");
+      link.id = N8N_CSS_ID;
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css";
+      document.head.appendChild(link);
+    }
+
+    let cancelled = false;
+
+    void import("https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js" as string).then(
+      ({ createChat }) => {
+        if (cancelled) return;
+        createChat({
+          webhookUrl:
+            "https://raghad2026.app.n8n.cloud/webhook/ef045e22-eab7-4940-b8f0-f01e6576dcb0/chat",
+          mode: "floating-button",
+          defaultLanguage: "ar",
+          initialMessages: ["أهلاً بك 👋", "معك رغد، كيف ممكن أساعدك؟"],
+          i18n: {
+            ar: {
+              title: "أهلاً وسهلاً 👋",
+              subtitle: "ابدأ المحادثة، متواجدين على مدار الساعة لخدمتك.",
+              footer: "",
+              getStarted: "مرحباً 👋",
+              inputPlaceholder: "اكتب سؤالك...",
+            },
+          },
+        });
+      },
+    );
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return null;
+}
