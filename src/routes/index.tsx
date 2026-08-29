@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, CalendarCheck, MessageCircle, Phone } from "lucide-react";
+import { ArrowLeft, CalendarCheck, CheckCircle2, MessageCircle, Phone } from "lucide-react";
 
 import clinicRoom from "@/assets/clinic-room.jpg";
 import heroClinic from "@/assets/hero-clinic.jpg";
