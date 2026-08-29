@@ -184,13 +184,14 @@ function HomePage() {
               <ArrowLeft className="size-4" aria-hidden="true" />
             </Link>
           </div>
-          <div className="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, index) => (
-              <Reveal key={service.slug} delay={index * 45} className="bg-card">
+              <Reveal key={service.slug} delay={index * 45}>
                 <ServiceCard service={service} />
               </Reveal>
             ))}
           </div>
+
         </div>
       </section>
 
