@@ -39,58 +39,95 @@ function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="container-x grid items-center gap-14 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-24">
-          <div>
-            <p className="eyebrow">GOLDEN ALMADAR · الرياض</p>
-            <h1 className="mt-6 text-3xl leading-[1.5] font-bold text-balance text-foreground sm:text-4xl lg:text-[3.1rem] lg:leading-[1.4]">
-              ابتسامتك… تبدأ من عناية تعرف الفرق.
+      <section className="relative isolate overflow-hidden bg-ink">
+        <img
+          src={heroClinic}
+          alt="استقبال عيادة المدار الذهبي لطب الأسنان"
+          width={1600}
+          height={1200}
+          fetchPriority="high"
+          className="absolute inset-0 -z-10 size-full object-cover opacity-40"
+        />
+        <div
+          className="absolute inset-0 -z-10 bg-gradient-to-l from-ink via-ink/90 to-ink/55"
+          aria-hidden="true"
+        />
+        <div className="container-x grid items-center gap-12 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:py-28">
+          <div className="text-background">
+            <p className="inline-flex items-center gap-2 rounded-full border border-background/20 bg-background/10 px-4 py-1.5 text-xs font-bold tracking-[0.12em] text-gold backdrop-blur-sm">
+              GOLDEN ALMADAR · الرياض
+            </p>
+            <h1 className="mt-7 max-w-2xl text-3xl leading-[1.45] font-bold text-balance sm:text-4xl lg:text-[3.15rem] lg:leading-[1.35]">
+              رعاية طبية متكاملة لأسنانك… بمعايير احترافية.
             </h1>
-            <p className="mt-7 max-w-xl text-base leading-[2.1] text-muted-foreground sm:text-[1.0625rem]">
-              في المدار الذهبي لطب الأسنان، نجمع بين الخبرة الطبية، التقنيات الحديثة، والعناية التي
-              تضع راحتك في المقام الأول.
+            <p className="mt-7 max-w-xl text-base leading-[2.1] text-background/80 sm:text-[1.0625rem]">
+              فريق استشاري متخصص، تقنيات تشخيص حديثة، وبروتوكولات تعقيم صارمة — لتحصل على تجربة علاج
+              واضحة ومريحة من أول زيارة.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/booking"
-                className="inline-flex min-h-13 items-center rounded-md bg-primary px-7 text-sm font-semibold text-primary-foreground transition-all hover:bg-ink-soft hover:shadow-[var(--shadow-soft)]"
+                className="inline-flex min-h-13 items-center gap-2 rounded-lg bg-gold px-7 text-sm font-bold text-ink transition-all hover:bg-gold-soft"
               >
-                احجز موعدك
+                <CalendarCheck className="size-4" aria-hidden="true" />
+                احجز موعدك الآن
               </Link>
               <Link
-                to="/contact"
-                className="inline-flex min-h-13 items-center gap-2 rounded-md border border-border px-7 text-sm font-medium text-foreground transition-colors hover:border-gold hover:text-gold"
+                to="/services"
+                className="inline-flex min-h-13 items-center gap-2 rounded-lg border border-background/25 bg-background/5 px-7 text-sm font-semibold text-background backdrop-blur-sm transition-colors hover:border-gold hover:text-gold"
               >
-                <MessageCircle className="size-4" aria-hidden="true" />
-                تواصل معنا
+                تعرّف على التخصصات
               </Link>
             </div>
-            <p className="mt-10 flex items-center gap-3 border-t border-border pt-6 text-sm text-muted-foreground">
-              <span className="gold-rule" aria-hidden="true" />
-              رعاية تبدأ بالاستماع، وتنتهي بابتسامة تثق بها.
-            </p>
+            <dl className="mt-12 grid max-w-xl grid-cols-2 gap-6 border-t border-background/15 pt-8 sm:grid-cols-4">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd>
+                    <span className="block text-xl font-bold text-gold sm:text-2xl">
+                      {stat.value}
+                    </span>
+                    <span className="mt-1.5 block text-xs leading-6 text-background/70">
+                      {stat.label}
+                    </span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <div className="relative">
-            <img
-              src={heroClinic}
-              alt="استقبال عيادة المدار الذهبي لطب الأسنان"
-              width={1600}
-              height={1200}
-              fetchPriority="high"
-              className="w-full rounded-lg border border-border object-cover"
-            />
-            <div className="absolute -bottom-6 right-6 hidden max-w-[15rem] border border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:block">
-              <p className="text-2xl font-bold text-foreground">98%</p>
-              <p className="mt-2 text-xs leading-6 text-muted-foreground">
-                رضا المرضى ضمن بيانات النموذج التجريبي للعيادة.
-              </p>
+          <div className="hidden lg:block">
+            <div className="rounded-2xl border border-background/15 bg-background/[0.07] p-7 backdrop-blur-md">
+              <p className="text-sm font-bold text-gold">أوقات العمل</p>
+              <ul className="mt-5 space-y-4 text-sm text-background/85">
+                {clinic.hours.map((slot) => (
+                  <li
+                    key={slot.days}
+                    className="flex items-center justify-between gap-4 border-b border-background/10 pb-4 last:border-0 last:pb-0"
+                  >
+                    <span className="font-semibold">{slot.days}</span>
+                    <span className="text-background/70">{slot.time}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`tel:${clinic.phoneDial}`}
+                className="mt-7 flex items-center justify-center gap-2 rounded-lg bg-background/10 py-3.5 text-sm font-bold text-background transition-colors hover:bg-background/20"
+              >
+                <Phone className="size-4 text-gold" aria-hidden="true" />
+                <span dir="ltr">{clinic.phone}</span>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      <TrustStrip />
+      <QuickAccess />
+
+      <div className="mt-16">
+        <TrustStrip />
+      </div>
+
 
       {/* About */}
       <section className="container-x py-20 lg:py-28">
