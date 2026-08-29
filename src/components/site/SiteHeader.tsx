@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { CalendarCheck, Clock, MapPin, Menu, Phone, X } from "lucide-react";
+import { CalendarCheck, Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Logo } from "@/components/site/Logo";
