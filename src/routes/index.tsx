@@ -195,50 +195,54 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Assistant */}
-      <section className="bg-ink py-20 text-background lg:py-28">
-        <div className="container-x grid items-center gap-14 lg:grid-cols-2">
+      {/* CTA band */}
+      <section className="mesh-teal py-20 text-background lg:py-24">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           <Reveal>
             <SectionHeading
-              eyebrow="مساعد المدار الذكي"
+              eyebrow="حجز المواعيد"
               tone="dark"
-              title="معك للإجابة، والمساعدة، وحجز موعدك."
-              body="مساعد رقمي تابع للعيادة يجيبك عن الخدمات وأوقات العمل، ويساعدك في تجهيز طلب حجز خلال دقيقة. لا يقدم تشخيصًا طبيًا، بل معلومات عامة ومساعدة في الحجز."
+              title="موعدك يبدأ بخطوة واحدة."
+              body="أرسل طلب الحجز إلكترونيًا واختر التخصص والطبيب والوقت المناسب، وسيتواصل معك فريق خدمة المرضى لتأكيد الموعد."
             />
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/booking"
-                className="inline-flex min-h-13 items-center gap-2 rounded-md bg-gold px-7 text-sm font-semibold text-ink transition-transform hover:scale-[1.02]"
+                className="inline-flex min-h-13 items-center gap-2 rounded-lg bg-gold px-7 text-sm font-bold text-ink transition-colors hover:bg-gold-soft"
               >
-                <MessageCircle className="size-4" aria-hidden="true" />
+                <CalendarCheck className="size-4" aria-hidden="true" />
                 احجز موعدك
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex min-h-13 items-center rounded-md border border-background/20 px-7 text-sm font-medium text-background transition-colors hover:border-gold hover:text-gold"
+                className="inline-flex min-h-13 items-center gap-2 rounded-lg border border-background/25 px-7 text-sm font-semibold text-background transition-colors hover:border-gold hover:text-gold"
               >
-                تواصل معنا
+                <MessageCircle className="size-4" aria-hidden="true" />
+                تواصل مع خدمة المرضى
               </Link>
             </div>
           </Reveal>
-          <Reveal delay={120} className="rounded-xl border border-background/10 bg-background/[0.04] p-6">
-            <div className="space-y-3 text-sm">
-              <p className="w-fit rounded-xl rounded-bl-sm bg-background/10 px-4 py-3 leading-7">
-                ابغا احجز
-              </p>
-              <p className="mr-auto w-fit rounded-xl rounded-br-sm bg-background px-4 py-3 leading-7 text-foreground">
-                أكيد 🤍 يسعدني أساعدك بالحجز. ممكن أعرف اسمك الكامل؟
-              </p>
-              <p className="w-fit rounded-xl rounded-bl-sm bg-background/10 px-4 py-3 leading-7">
-                سارة العتيبي
-              </p>
-              <p className="mr-auto w-fit rounded-xl rounded-br-sm bg-background px-4 py-3 leading-7 text-foreground">
-                شكرًا لك. ما رقم الجوال للتواصل معك؟
-              </p>
-            </div>
+          <Reveal
+            delay={120}
+            className="rounded-2xl border border-background/15 bg-background/[0.07] p-7 backdrop-blur-sm"
+          >
+            <ol className="space-y-6 text-sm">
+              {journey.map((step) => (
+                <li key={step.step} className="flex gap-4">
+                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-gold/20 text-xs font-bold text-gold">
+                    {step.step}
+                  </span>
+                  <span>
+                    <span className="block font-bold text-background">{step.title}</span>
+                    <span className="mt-1.5 block leading-7 text-background/70">{step.body}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
           </Reveal>
         </div>
       </section>
+
 
       {/* Doctors */}
       <section className="container-x py-20 lg:py-28">
