@@ -12,7 +12,6 @@ import { ServiceCard } from "@/components/site/ServiceCard";
 import { Testimonials } from "@/components/site/Testimonials";
 import { TrustStrip } from "@/components/site/TrustStrip";
 import { cases, doctors, faqs, journey, services, stats } from "@/data/clinic";
-import { openAssistant } from "@/lib/assistant-bus";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,14 +57,13 @@ function HomePage() {
               >
                 احجز موعدك
               </Link>
-              <button
-                type="button"
-                onClick={openAssistant}
+              <Link
+                to="/contact"
                 className="inline-flex min-h-13 items-center gap-2 rounded-md border border-border px-7 text-sm font-medium text-foreground transition-colors hover:border-gold hover:text-gold"
               >
                 <MessageCircle className="size-4" aria-hidden="true" />
-                تحدث مع مساعدنا الذكي
-              </button>
+                تواصل معنا
+              </Link>
             </div>
             <p className="mt-10 flex items-center gap-3 border-t border-border pt-6 text-sm text-muted-foreground">
               <span className="gold-rule" aria-hidden="true" />
@@ -169,19 +167,18 @@ function HomePage() {
               body="مساعد رقمي تابع للعيادة يجيبك عن الخدمات وأوقات العمل، ويساعدك في تجهيز طلب حجز خلال دقيقة. لا يقدم تشخيصًا طبيًا، بل معلومات عامة ومساعدة في الحجز."
             />
             <div className="mt-10 flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={openAssistant}
+              <Link
+                to="/booking"
                 className="inline-flex min-h-13 items-center gap-2 rounded-md bg-gold px-7 text-sm font-semibold text-ink transition-transform hover:scale-[1.02]"
               >
                 <MessageCircle className="size-4" aria-hidden="true" />
-                ابدأ المحادثة
-              </button>
+                احجز موعدك
+              </Link>
               <Link
-                to="/assistant"
+                to="/contact"
                 className="inline-flex min-h-13 items-center rounded-md border border-background/20 px-7 text-sm font-medium text-background transition-colors hover:border-gold hover:text-gold"
               >
-                كيف يعمل المساعد؟
+                تواصل معنا
               </Link>
             </div>
           </Reveal>
