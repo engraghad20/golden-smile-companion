@@ -34,6 +34,9 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-teal-soft: var(--teal-soft);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-sand: var(--sand);
@@ -43,39 +46,45 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --shadow-soft: 0 1px 2px oklch(0.19 0.02 235 / 0.04), 0 12px 32px -20px oklch(0.19 0.02 235 / 0.35);
-  --shadow-lift: 0 2px 4px oklch(0.19 0.02 235 / 0.05), 0 28px 60px -30px oklch(0.19 0.02 235 / 0.45);
+  --shadow-soft: 0 1px 2px oklch(0.28 0.04 205 / 0.05), 0 12px 32px -20px oklch(0.28 0.04 205 / 0.35);
+  --shadow-lift: 0 2px 4px oklch(0.28 0.04 205 / 0.06), 0 28px 60px -30px oklch(0.28 0.04 205 / 0.45);
+  --shadow-card: 0 1px 2px oklch(0.28 0.04 205 / 0.04), 0 10px 30px -18px oklch(0.28 0.04 205 / 0.3);
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.875rem;
 
-  --ink: oklch(0.198 0.021 235);
-  --ink-soft: oklch(0.263 0.026 214);
-  --sand: oklch(0.938 0.012 86);
-  --gold: oklch(0.681 0.062 85);
-  --gold-soft: oklch(0.83 0.045 89);
+  /* Medical deep teal · warm gold · clinical white */
+  --ink: oklch(0.268 0.045 210);
+  --ink-soft: oklch(0.362 0.049 205);
+  --sand: oklch(0.962 0.008 200);
+  --teal: oklch(0.502 0.083 200);
+  --teal-deep: oklch(0.318 0.058 208);
+  --teal-soft: oklch(0.93 0.026 197);
+  --gold: oklch(0.688 0.076 82);
+  --gold-soft: oklch(0.85 0.05 87);
 
-  --background: oklch(0.973 0.006 86);
-  --foreground: oklch(0.198 0.021 235);
-  --card: oklch(0.995 0.003 86);
-  --card-foreground: oklch(0.198 0.021 235);
-  --popover: oklch(0.995 0.003 86);
-  --popover-foreground: oklch(0.198 0.021 235);
-  --primary: oklch(0.198 0.021 235);
-  --primary-foreground: oklch(0.973 0.006 86);
-  --secondary: oklch(0.938 0.012 86);
-  --secondary-foreground: oklch(0.198 0.021 235);
-  --muted: oklch(0.938 0.012 86);
-  --muted-foreground: oklch(0.475 0.012 220);
-  --accent: oklch(0.681 0.062 85);
-  --accent-foreground: oklch(0.198 0.021 235);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.238 0.033 214);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.238 0.033 214);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.238 0.033 214);
+  --primary: oklch(0.428 0.077 203);
+  --primary-foreground: oklch(0.995 0.002 200);
+  --secondary: oklch(0.968 0.011 200);
+  --secondary-foreground: oklch(0.268 0.045 210);
+  --muted: oklch(0.968 0.011 200);
+  --muted-foreground: oklch(0.508 0.019 218);
+  --accent: oklch(0.93 0.026 197);
+  --accent-foreground: oklch(0.268 0.045 210);
   --destructive: oklch(0.512 0.16 27);
   --destructive-foreground: oklch(0.98 0.005 86);
-  --border: oklch(0.884 0.011 86);
-  --input: oklch(0.884 0.011 86);
-  --ring: oklch(0.681 0.062 85);
+  --border: oklch(0.912 0.009 210);
+  --input: oklch(0.912 0.009 210);
+  --ring: oklch(0.502 0.083 200);
 }
+
 
 @layer base {
   * {
@@ -103,7 +112,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-gold);
+    outline: 2px solid var(--color-teal);
     outline-offset: 3px;
   }
 }
@@ -111,7 +120,7 @@
 @utility container-x {
   width: 100%;
   margin-inline: auto;
-  max-width: 78rem;
+  max-width: 82rem;
   padding-inline: 1.25rem;
 
   @media (min-width: 768px) {
@@ -126,21 +135,47 @@
 @utility gold-rule {
   display: block;
   width: 3rem;
-  height: 1px;
+  height: 2px;
+  border-radius: 999px;
   background: linear-gradient(
     to left,
-    var(--color-gold),
-    color-mix(in oklab, var(--color-gold) 10%, transparent)
+    var(--color-teal),
+    color-mix(in oklab, var(--color-gold) 80%, transparent)
   );
 }
 
 @utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-teal);
+  font-weight: 700;
 }
+
+@utility surface-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+@utility mesh-teal {
+  background:
+    radial-gradient(
+      120% 100% at 90% 0%,
+      color-mix(in oklab, var(--color-teal) 22%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      90% 80% at 0% 100%,
+      color-mix(in oklab, var(--color-gold) 14%, transparent),
+      transparent 60%
+    ),
+    var(--color-ink);
+}
+
 
 @utility reveal {
   opacity: 0;
