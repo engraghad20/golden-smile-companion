@@ -11,7 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BookingRouteImport } from './routes/booking'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DoctorsRouteImport } from './routes/doctors'
+import { Route as ExperienceRouteImport } from './routes/experience'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
@@ -26,9 +30,29 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookingRoute = BookingRouteImport.update({
+  id: '/booking',
+  path: '/booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DoctorsRoute = DoctorsRouteImport.update({
   id: '/doctors',
   path: '/doctors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperienceRoute = ExperienceRouteImport.update({
+  id: '/experience',
+  path: '/experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -50,7 +74,11 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/booking': typeof BookingRoute
+  '/contact': typeof ContactRoute
   '/doctors': typeof DoctorsRoute
+  '/experience': typeof ExperienceRoute
+  '/faq': typeof FaqRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
@@ -58,7 +86,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/booking': typeof BookingRoute
+  '/contact': typeof ContactRoute
   '/doctors': typeof DoctorsRoute
+  '/experience': typeof ExperienceRoute
+  '/faq': typeof FaqRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -66,7 +98,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/booking': typeof BookingRoute
+  '/contact': typeof ContactRoute
   '/doctors': typeof DoctorsRoute
+  '/experience': typeof ExperienceRoute
+  '/faq': typeof FaqRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
@@ -74,14 +110,36 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/doctors' | '/services' | '/services/$slug' | '/services/'
+    | '/'
+    | '/about'
+    | '/booking'
+    | '/contact'
+    | '/doctors'
+    | '/experience'
+    | '/faq'
+    | '/services'
+    | '/services/$slug'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/doctors' | '/services/$slug' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/booking'
+    | '/contact'
+    | '/doctors'
+    | '/experience'
+    | '/faq'
+    | '/services/$slug'
+    | '/services'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/booking'
+    | '/contact'
     | '/doctors'
+    | '/experience'
+    | '/faq'
     | '/services'
     | '/services/$slug'
     | '/services/'
@@ -90,7 +148,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BookingRoute: typeof BookingRoute
+  ContactRoute: typeof ContactRoute
   DoctorsRoute: typeof DoctorsRoute
+  ExperienceRoute: typeof ExperienceRoute
+  FaqRoute: typeof FaqRoute
   ServicesRoute: typeof ServicesRouteWithChildren
 }
 
@@ -110,11 +172,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/booking': {
+      id: '/booking'
+      path: '/booking'
+      fullPath: '/booking'
+      preLoaderRoute: typeof BookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/doctors': {
       id: '/doctors'
       path: '/doctors'
       fullPath: '/doctors'
       preLoaderRoute: typeof DoctorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -158,7 +248,11 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BookingRoute: BookingRoute,
+  ContactRoute: ContactRoute,
   DoctorsRoute: DoctorsRoute,
+  ExperienceRoute: ExperienceRoute,
+  FaqRoute: FaqRoute,
   ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
