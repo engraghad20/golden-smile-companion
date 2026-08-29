@@ -18,6 +18,9 @@ export function N8nChat() {
           --chat--color-light: #ffffff;
           --chat--color-dark: #000000;
           --chat--font-family: 'Tajawal', sans-serif;
+          --chat--toggle--background: #1a365d;
+          --chat--toggle--hover--background: #2a4365;
+          --chat--toggle--active--background: #2a4365;
         }
       `;
       document.head.appendChild(style);
