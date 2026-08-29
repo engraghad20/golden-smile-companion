@@ -22,6 +22,12 @@ export function N8nChat() {
           --chat--toggle--hover--background: #2a4365;
           --chat--toggle--active--background: #2a4365;
         }
+        .chat-window-toggle {
+          background: #1a365d !important;
+        }
+        .chat-window-toggle:hover {
+          background: #2a4365 !important;
+        }
       `;
       document.head.appendChild(style);
     }
