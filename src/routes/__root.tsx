@@ -12,6 +12,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { ChatWidget } from "@/components/site/ChatWidget";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
+import { ASSISTANT_OPEN_EVENT } from "@/lib/assistant-bus";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -123,6 +124,12 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const [assistantOpen, setAssistantOpen] = useState(false);
+
+  useEffect(() => {
+    const open = () => setAssistantOpen(true);
+    window.addEventListener(ASSISTANT_OPEN_EVENT, open);
+    return () => window.removeEventListener(ASSISTANT_OPEN_EVENT, open);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
