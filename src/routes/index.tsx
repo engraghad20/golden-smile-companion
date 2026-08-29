@@ -139,17 +139,20 @@ function HomePage() {
               title="طب الأسنان… عندما تلتقي الدقة بالاهتمام."
               body="نؤمن أن زيارة طبيب الأسنان لا يجب أن تكون تجربة مقلقة. لذلك صممنا في المدار الذهبي تجربة تبدأ بفهم احتياجك، مرورًا بخطة علاج واضحة، وصولًا إلى رعاية تضع راحتك في كل خطوة."
             />
-            <dl className="mt-10 grid grid-cols-2 gap-8 border-t border-border pt-8">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <dt className="sr-only">{stat.label}</dt>
-                  <dd>
-                    <span className="block text-2xl font-bold text-foreground">{stat.value}</span>
-                    <span className="mt-2 block text-sm text-muted-foreground">{stat.label}</span>
-                  </dd>
-                </div>
+            <ul className="mt-10 grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
+              {[
+                "تعقيم وفق بروتوكولات معتمدة",
+                "تشخيص رقمي وأشعة منخفضة الجرعة",
+                "خطة علاج وتكلفة واضحة مسبقًا",
+                "متابعة ما بعد العلاج",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <CheckCircle2 className="size-4.5 shrink-0 text-teal" aria-hidden="true" />
+                  {item}
+                </li>
               ))}
-            </dl>
+            </ul>
+
             <Link
               to="/about"
               className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-gold"
