@@ -1,9 +1,9 @@
-import { createFileRoute, Outlet, useRouterState } from "@tanstack/react-router";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/services")({
-  component: () => <Outlet />,
+  component: ServicesLayout,
 });
 
-export function useServicesPathname() {
-  return useRouterState({ select: (state) => state.location.pathname });
+function ServicesLayout() {
+  return <Outlet />;
 }
