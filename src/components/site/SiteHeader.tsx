@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { CalendarCheck, Clock, MapPin, Menu, Phone, X } from "lucide-react";
+import { CalendarCheck, Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Logo } from "@/components/site/Logo";
@@ -24,39 +24,6 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Utility bar */}
-      <div className="hidden bg-ink text-background/75 lg:block">
-        <div className="container-x flex h-10 items-center justify-between text-[0.78rem]">
-          <div className="flex items-center gap-6">
-            <span className="inline-flex items-center gap-2">
-              <MapPin className="size-3.5 text-gold" aria-hidden="true" />
-              {clinic.address}
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <Clock className="size-3.5 text-gold" aria-hidden="true" />
-              {clinic.hours[0]?.days} · {clinic.hours[0]?.time}
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a
-              href={`tel:${clinic.phoneDial}`}
-              className="inline-flex items-center gap-2 transition-colors hover:text-gold"
-            >
-              <Phone className="size-3.5 text-gold" aria-hidden="true" />
-              <span dir="ltr">{clinic.phone}</span>
-            </a>
-            <a
-              href={`https://wa.me/${clinic.whatsapp}`}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="transition-colors hover:text-gold"
-            >
-              واتساب العيادة
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Main bar */}
       <div
         className={cn(
