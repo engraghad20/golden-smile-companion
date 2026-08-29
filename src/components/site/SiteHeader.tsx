@@ -1,12 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Logo } from "@/components/site/Logo";
 import { navLinks } from "@/data/clinic";
 import { cn } from "@/lib/utils";
 
-export function SiteHeader({ onOpenAssistant }: { onOpenAssistant: () => void }) {
+export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (state) => state.location.pathname });
@@ -49,14 +49,6 @@ export function SiteHeader({ onOpenAssistant }: { onOpenAssistant: () => void })
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={onOpenAssistant}
-            className="hidden items-center gap-2 rounded-md border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent md:inline-flex"
-          >
-            <MessageCircle className="size-4" aria-hidden="true" />
-            اسأل المساعد الذكي
-          </button>
           <Link
             to="/booking"
             className="hidden rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-ink-soft hover:shadow-[var(--shadow-soft)] sm:inline-flex"
@@ -102,16 +94,6 @@ export function SiteHeader({ onOpenAssistant }: { onOpenAssistant: () => void })
             >
               احجز موعدك
             </Link>
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false);
-                onOpenAssistant();
-              }}
-              className="rounded-md border border-border px-5 py-3.5 text-sm font-medium text-foreground"
-            >
-              اسأل المساعد الذكي
-            </button>
           </div>
         </nav>
       </div>
