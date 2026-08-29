@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 export function BeforeAfterSlider({
   before,
@@ -10,11 +10,9 @@ export function BeforeAfterSlider({
   label: string;
 }) {
   const [value, setValue] = useState(50);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
-      ref={containerRef}
       className="relative aspect-4/3 w-full overflow-hidden rounded-lg border border-border select-none"
     >
       <img
@@ -25,17 +23,15 @@ export function BeforeAfterSlider({
         height={700}
         className="absolute inset-0 size-full object-cover"
       />
-      <div className="absolute inset-0 overflow-hidden" style={{ width: `${value}%` }}>
-        <img
-          src={before}
-          alt={`${label} — قبل`}
-          loading="lazy"
-          width={900}
-          height={700}
-          className="absolute inset-y-0 right-0 h-full w-[100vw] max-w-none object-cover"
-          style={{ width: containerRef.current?.clientWidth ?? "100%" }}
-        />
-      </div>
+      <img
+        src={before}
+        alt={`${label} — قبل`}
+        loading="lazy"
+        width={900}
+        height={700}
+        className="absolute inset-0 size-full object-cover"
+        style={{ clipPath: `inset(0 0 0 ${100 - value}%)` }}
+      />
 
       <span className="absolute top-3 right-3 rounded-full bg-ink/80 px-3 py-1 text-[0.7rem] text-background">
         قبل
