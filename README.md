@@ -15,4 +15,4 @@
 
 الفكرة مو بس أتمتة، الفكرة كيف نخلق تجربة مستخدم رقمية تليق بالمعايير الحديثة.
 
-رابط الموقع للتجربة : https://preview--golden-smile-companion.lovable.app/
+رابط الموقع للتجربة : https://agent-6a95d08454ea3cd7d7--raghad-smile-companion.netlify.app/
