@@ -1,5 +1,6 @@
-<img width="1012" height="502" alt="WhatsApp Image 2026-08-31 at 6 14 09 PM" src="https://github.com/user-attachments/assets/ca79f076-daa3-454c-ac98-138f030807f3" />
 <img width="1280" height="618" alt="WhatsApp Image 2026-08-31 at 6 14 09 PM (2)" src="https://github.com/user-attachments/assets/78b6cb51-a859-4183-b00a-8176f137ed7f" />
+<img width="1012" height="502" alt="WhatsApp Image 2026-08-31 at 6 14 09 PM" src="https://github.com/user-attachments/assets/ca79f076-daa3-454c-ac98-138f030807f3" />
+
 
 بنيت موقع كامل لمستشفى أسنان افتراضي، وربطت فيه شات بوت ذكي بـ n8n يرد على العملاء 24/7، وأي حجز أو بيانات تروح مباشرة على Google Sheets 🤖🔥🤯
 
